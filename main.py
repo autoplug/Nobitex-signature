@@ -4,8 +4,8 @@ import json
 import requests
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
 
-PUBLIC_KEY = "8rQrPn17GnToqsRMSrifMkBHnbMNGIKxBbUSWsrJAxo="
-secret_key_base64 = "DYXv_4aBBxfj-bp7VTqup7gVfOeYPpKPvZmDaLS6orY="
+PUBLIC_KEY = "public_key"
+secret_key_base64 = "secret_key"
 private_key_bytes = base64.urlsafe_b64decode(secret_key_base64)
 private_key = Ed25519PrivateKey.from_private_bytes(private_key_bytes)
 
