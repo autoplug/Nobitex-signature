@@ -25,6 +25,7 @@ payload = {
     "price": "64000" 
     }
 body = json.dumps(payload)
+body = json.dumps(payload, separators=(',', ':'))
 
 message = (timestamp + method + path + body).encode("utf-8")
 
