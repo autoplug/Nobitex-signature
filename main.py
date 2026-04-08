@@ -4,9 +4,9 @@ import json
 import requests
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
 
-PUBLIC_KEY = "public_key"
-secret_key_base64 = "secret_key"
-private_key_bytes = base64.urlsafe_b64decode(secret_key_base64)
+PUBLIC_KEY = os.getenv("PUBLIC_KEY")
+SECRET_KEY_base64 = os.getenv("SECRET_KEY")
+private_key_bytes = base64.urlsafe_b64decode(SECRET_KEY_base64)
 private_key = Ed25519PrivateKey.from_private_bytes(private_key_bytes)
 
 timestamp = str(int(time.time() * 1000))
