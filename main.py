@@ -31,7 +31,7 @@ message = (timestamp + method + path + body).encode("utf-8")
 
 signature_bytes = private_key.sign(message)
 signature = base64.b64encode(signature_bytes).decode("utf-8")
-#signature = base64.urlsafe_b64encode(signature_bytes).decode()
+signature = base64.urlsafe_b64encode(signature_bytes).decode()
 
 headers = {
     "Nobitex-Key": PUBLIC_KEY,
