@@ -25,7 +25,7 @@ payload = {
     }
 body = json.dumps(payload)
 
-message = (timestamp + method + base_url + path + body).encode("utf-8")
+message = (timestamp + method + path + body).encode("utf-8")
 
 signature_bytes = private_key.sign(message)
 signature = base64.b64encode(signature_bytes).decode("utf-8")
@@ -39,6 +39,6 @@ headers = {
 }
 
 url = base_url + path
-response = requests.post(url, headers=headers, json=payload)
+response = requests.post(url, headers=headers, data=body)
 print(response.status_code)
 print(response.text)
