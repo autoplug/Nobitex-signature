@@ -9,6 +9,10 @@ PUBLIC_KEY = os.getenv("PUBLIC_KEY")
 SECRET_KEY_base64 = os.getenv("SECRET_KEY")
 private_key_bytes = base64.urlsafe_b64decode(SECRET_KEY_base64)
 #private_key_bytes = base64.b64decode(SECRET_KEY_base64)
+print(len(private_key_bytes))
+
+if len(private_key_bytes) == 64:
+    private_key_bytes = private_key_bytes[:32]
 private_key = Ed25519PrivateKey.from_private_bytes(private_key_bytes)
 
 timestamp = str(int(time.time() * 1000))
