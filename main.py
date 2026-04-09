@@ -24,22 +24,13 @@ payload = {
     "amount": "0.00008", 
     "price": "64000" 
     }
-body = json.dumps(payload)
+
 body = json.dumps(payload, separators=(',', ':'))
 message = (timestamp + method + path + body).encode("utf-8")
-
-
-# چاپ دیباگ
-print("=== DEBUG INFO ===")
-print("BODY:", body)
-print("MESSAGE FOR SIGNATURE:", message.decode())
-print("BODY LENGTH:", len(body))
-print("MESSAGE LENGTH:", len(message))
 
 signature_bytes = private_key.sign(message)
 #signature = base64.b64encode(signature_bytes).decode("utf-8")
 signature = base64.urlsafe_b64encode(signature_bytes).decode().rstrip("=")
-print("SIGNATURE:", signature)
 
 headers = {
     "Nobitex-Key": PUBLIC_KEY,
